@@ -13,11 +13,16 @@ class SelectView {
     })
 
     pubSub.subscribe('Countries:details', event => {
-      const countryDetails = event.getdetail
+      const countryDetails = event.detail
       this.renderDetails(countryDetails)
     })
 
     pubSub.publish('SelectView:getNames')
+
+    this.selectElement.addEventListener('change', event => {
+      const countryName = event.target.value
+      pubSub.publish('SelectView:getDetails', countryName)
+    })
   }
 
   renderDetails(countryDetails) {

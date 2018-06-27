@@ -6,7 +6,7 @@ class CountriesModel {
     pubSub.subscribe('SelectView:getNames', this.getNames)
 
     pubSub.subscribe('SelectView:getDetails', event => {
-      const countryName = event.getdetail
+      const countryName = event.detail
       this.getDetails(countryName)
     })
   }
@@ -31,7 +31,7 @@ class CountriesModel {
         return
       }
 
-      pubSub.publish('Countries:details', JSON.parse(result))
+      pubSub.publish('Countries:details', result[0])
     })
   }
 }
