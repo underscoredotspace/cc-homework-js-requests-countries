@@ -8,13 +8,7 @@ class SelectView {
   bindEvents() {
     pubSub.subscribe('Countries:names', event => {
       const countryNameList = event.detail
-      console.log(countryNameList)
       this.populateCountriesList(countryNameList)
-    })
-
-    pubSub.subscribe('Countries:details', event => {
-      const countryDetails = event.detail
-      this.renderDetails(countryDetails)
     })
 
     pubSub.publish('SelectView:getNames')
@@ -23,10 +17,6 @@ class SelectView {
       const countryName = event.target.value
       pubSub.publish('SelectView:getDetails', countryName)
     })
-  }
-
-  renderDetails(countryDetails) {
-    console.log(countryDetails)
   }
 
   populateCountriesList(countryNameList) {
