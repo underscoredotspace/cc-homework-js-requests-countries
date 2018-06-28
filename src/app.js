@@ -13,5 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const detailElement = document.querySelector('#country')
   const detailView = new CountryDetailView(detailElement)
   detailView.bindEvents()
+
+  selectView.getCountryNameList()
 });
 

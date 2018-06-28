@@ -11,8 +11,6 @@ class SelectView {
       this.populateCountriesList(countryNameList)
     })
 
-    pubSub.publish('SelectView:getNames')
-
     this.selectElement.addEventListener('change', event => {
       const countryName = event.target.value
       pubSub.publish('SelectView:getDetails', countryName)
@@ -26,6 +24,10 @@ class SelectView {
       option.textContent = countryName
       this.selectElement.appendChild(option)
     }
+  }
+
+  getCountryNameList() {
+    pubSub.publish('SelectView:getNames')
   }
 
 
